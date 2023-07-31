@@ -26,11 +26,8 @@ class UpdateTierJob < ApplicationJob
       users.each do |user|
 
         customerId = user[:customerId]
-        total_spent_in_cent = Order.where(customerId: customerId, date: { :$gte => start_date}).sum(:totalInCents)
-
         customer_tier = Customers::CustomerTierService.new.calculate_tier(
                           customerId, 
-                          total_spent_in_cent,
                           Date.new(Date.today.year, 1, 1)
                         )
         new_tier = customer_tier['currentTier'] rescue user.tier

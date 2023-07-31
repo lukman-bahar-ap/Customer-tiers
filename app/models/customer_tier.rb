@@ -11,5 +11,4 @@ class CustomerTier
   field :downgradeDate, type: Date
   field :amountToAvoidDowngrade, type: Integer
 
-  belongs_to :customer 
 end

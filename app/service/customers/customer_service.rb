@@ -2,12 +2,11 @@ module Customers
   class CustomerService
     def increase_total_spent(customerId, totalInCents)
       customer = Customer.find_by(customerId: customerId)
-      new_total_spent = customer.totalSpent + ( totalInCents / 100 )
+      new_total_spent = customer.totalSpent + ( totalInCents / 100 ).to_f
       
       customer_tier = Customers::CustomerTierService.new.calculate_tier(
                                 customerId, 
-                                totalInCents,
-                                Date.new(Date.today.year, 1, 1)
+                                Date.new(DateTime.now.year, 1, 1)
                             )
       puts customer_tier
       new_tier = customer_tier['currentTier'] rescue customer.tier
