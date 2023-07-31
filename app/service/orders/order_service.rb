@@ -4,9 +4,9 @@ module Orders
       order_form.save
     end
 
-    def list_since_start_of_last_year(customerId, page = 0)
-      startOfLastYear = "#{Date.today.year}-01-01"
-      orders = Order.where(customerId: customerId, date: { :$gte => startOfLastYear})     
+    def list_since_start_of_last_year(customerId)
+      start_date = Date.new(Date.today.year, 1, 1)
+      orders = Order.where(customerId: customerId, date: { :$gte => start_date })     
       [orders]
     end
 
