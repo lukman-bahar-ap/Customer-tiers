@@ -7,7 +7,7 @@ module Orders
     def list_since_start_of_last_year(customerId)
       start_date = Date.new(Date.today.year, 1, 1)
       orders = Order.where(customerId: customerId, date: { :$gte => start_date })     
-      [orders]
+      orders
     end
 
     def find_order(id)

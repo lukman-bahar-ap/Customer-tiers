@@ -35,6 +35,7 @@ cron file is attached in project-folder/cronjob.sh
 
     `bundle exec rake db:seed:single SEED=seed_customers`
     `bundle exec rake db:seed:single SEED=seed_orders`
+    `bundle exec rake db:seed:single SEED=seed_orders_now`
 <br>
 
 <b> 4. run backend in development mode : </b><br>
