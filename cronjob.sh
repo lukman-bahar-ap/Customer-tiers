@@ -23,7 +23,7 @@
 # m h  dom mon dow   command
 
 # recalculate_tier, this cron run every years At 11:59pm on December 31st
-59 23 31 12 * curl -H "Authorization: Token token=abctoken" -X POST http://localhost:3000/recalculate_tier -d ""
+59 23 31 12 * curl -X GET http://localhost:3000/update_tier_users -d ""
 
 # if using servers VM, run command sudo crontab -e, and then move the cron bellow,
 # and then, reload cron with command : sudo service cron reload
