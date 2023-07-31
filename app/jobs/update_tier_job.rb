@@ -27,7 +27,7 @@ class UpdateTierJob < ApplicationJob
 
         customerId = user[:customerId]
         total_spent_in_cent = Order.where(customerId: customerId, date: { :$gte => start_date}).sum(:totalInCents)
-        # Save the updated user record
+
         customer_tier = Customers::CustomerTierService.new.calculate_tier(
                           customerId, 
                           total_spent_in_cent,
