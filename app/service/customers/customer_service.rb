@@ -16,5 +16,23 @@ module Customers
       customer.tier = new_tier
       customer.save   
     end  
+
+    def user_info(customerId)
+      customer = Customer.find_by(customerId: customerId)
+      customer_tier = CustomerTier.find_by(customerId: customerId)
+  
+      {
+        customerId: customer.customerId,
+        customerName: customer.customerName,
+        totalSpent: customer.totalSpent,
+        currentTier: customer_tier.currentTier,
+        startDateOfTierCalculation: customer_tier.startDateOfTierCalculation,
+        amountSpentSinceStartDate: customer_tier.amountSpentSinceStartDate,
+        amountToReachnextTier: customer_tier.amountToReachnextTier,
+        nextYearDowngradeTier: customer_tier.nextYearDowngradeTier,
+        downgradeDate: customer_tier.downgradeDate,
+        amountToAvoidDowngrade: customer_tier.amountToAvoidDowngrade
+      }
+    end
   end
 end  

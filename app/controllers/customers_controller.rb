@@ -1,19 +1,21 @@
 class CustomersController < ApplicationController
   def show
-    customer = Customer.find_by(customerId: params[:customerId])
-    customer_tier = CustomerTier.find_by(customerId: params[:customerId])
+    user_info = Customers::CustomerService.new.user_info(params[:customerId])
 
     render json: {
-      customerId: customer.customerId,
-      customerName: customer.customerName,
-      totalSpent: customer.totalSpent,
-      currentTier: customer_tier.currentTier,
-      startDateOfTierCalculation: customer_tier.startDateOfTierCalculation,
-      amountSpentSinceStartDate: customer_tier.amountSpentSinceStartDate,
-      amountToReachnextTier: customer_tier.amountToReachnextTier,
-      nextYearDowngradeTier: customer_tier.nextYearDowngradeTier,
-      downgradeDate: customer_tier.downgradeDate,
-      amountToAvoidDowngrade: customer_tier.amountToAvoidDowngrade
+      status: 200,
+      data: {
+        customerId: user_info[:customerId],
+        customerName: user_info[:customerName],
+        totalSpent: user_info[:totalSpent],
+        currentTier: user_info[:currentTier],
+        startDateOfTierCalculation: user_info[:startDateOfTierCalculation],
+        amountSpentSinceStartDate: user_info[:amountSpentSinceStartDate],
+        amountToReachnextTier: user_info[:amountToReachnextTier],
+        nextYearDowngradeTier: user_info[:nextYearDowngradeTier],
+        downgradeDate: user_info[:downgradeDate],
+        amountToAvoidDowngrade: user_info[:amountToAvoidDowngrade]
+      }
     }
   end
   
