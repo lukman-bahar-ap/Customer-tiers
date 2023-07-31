@@ -21,10 +21,13 @@ class UpdateTierJob < ApplicationJob
     while offset < total_users
       # Fetch the current batch of users
       users = Customer.offset(offset).limit(batch_size)
-  
+
+      
       # Process each user in the batch
       users.each do |user|
-        total_spent_in_cent = Order.where('date >= ?', start_date).sum(:totalInCents)
+        #total_spent_in_cent = Order.where('date >= ?', start_date).sum(:totalInCents)
+        customerId = user[:customerId]
+        total_spent_in_cent = Order.where(customerId: customerId, date: { :$gte => start_date}).sum(:totalInCents)
         # Save the updated user record
         customer_tier = Customers::CustomerTierService.new.calculate_tier(
                           customerId, 

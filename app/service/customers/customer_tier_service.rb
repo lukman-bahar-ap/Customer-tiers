@@ -55,7 +55,9 @@ module Customers
       if total_spent_in_cent > current_tier_info['threshold'].to_i
         nil
       else
-        tier_filter = @tier_data.find { |tier| tier[:level] == current_tier_info[:level] - 1}
+        return current_tier_info[:name] if current_tier_info[:level] == 1
+
+        tier_filter =  @tier_data.find { |tier| tier[:level] == (current_tier_info[:level] - 1) }
         tier_filter[:name]
       end
     end

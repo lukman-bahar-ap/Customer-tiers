@@ -18,7 +18,8 @@ class CustomersController < ApplicationController
   end
   
   def update_tier_users
-    UpdateTierJob.now
+    # Enqueue the background job
+    UpdateTierJob.perform_now
     render json: { message: 'User update job enqueued successfully' }
   end
 end

@@ -55,7 +55,7 @@ customers
 
     ----------------------------
     4. An endpoint which lists the customer's orders since the start of last year, including the order ID, date and order total
-    
+
         GET => `http://127.0.0.1:3000/orders/[ID_CUSTOMERS]` 
 
 <br>
@@ -66,6 +66,5 @@ customers
    3. copy commmand cronjob on file cronjob.sh
    4. exit and save
    5. reload crontab using `sudo service cron reload`
-   6. run command `bundle exec sidekiq`
 
    NB : cron will be hit endpoint for running job in background to update all customers with pagination process
