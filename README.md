@@ -44,7 +44,7 @@ customers
 
     2. A way to recalculate the current tier of each customer at the end of each year (for example, you could create a cron job and give instructions of how and when to execute it)
 
-        GET => `http://127.0.0.1:3000/customers/update_tier_users` 
+        GET => `http://127.0.0.1:3000/update_tier_users` 
 
     ---------------------------
     get 'orders/:customerId', to: 'orders#list'
