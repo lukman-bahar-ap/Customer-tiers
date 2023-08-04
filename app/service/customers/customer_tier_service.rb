@@ -38,7 +38,6 @@ module Customers
       customer_tier = CustomerTier.find_or_create_by(customerId: customer_id)
       if customer_tier.update(customer_tier_data)
         #response
-        puts customer_tier_data
         customer_tier_data
       end 
     end

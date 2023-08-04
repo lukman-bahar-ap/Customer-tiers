@@ -6,7 +6,7 @@ module Customers
       
       customer_tier = Customers::CustomerTierService.new.calculate_tier(
                                 customerId, 
-                                Date.new(DateTime.now.year, 1, 1)
+                                Date.new((DateTime.now.year) -1 , 1, 1)
                             )
       puts customer_tier
       new_tier = customer_tier['currentTier'] rescue customer.tier
